@@ -23,8 +23,11 @@ const Aws = require('@kelchy/aws')
 # DEVELOPMENT: How to include in package.json (warning, this will build all dependencies)
 ```
   "dependencies": {
-    "@kelchy/node-lib": "github:kelchy/node-lib#master",
-    "@kelchy/common": "./node_modules/@kelchy/node-lib/lib/common"
+    "node-lib": "github:kelchy/node-lib#main",
+    "@kelchy/common": "file:node_modules/node-lib/lib/common",
+    "@kelchy/log": "file:node_modules/node-lib/lib/log",
+    "@kelchy/redis": "file:node_modules/node-lib/lib/redis",
+    "@kelchy/aws": "file:node_modules/node-lib/lib/aws"
   }
 ```
 
