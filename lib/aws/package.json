@@ -26,6 +26,7 @@
   },
   "main": "./index.js",
   "dependencies": {
+    "@kelchy/common": "^1.0.0",
     "aws-sdk": "^2.827.0"
   },
   "devDependencies": {

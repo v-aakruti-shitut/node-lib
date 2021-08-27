@@ -7,21 +7,21 @@
 aws-sdk
 ```
 
-- Environment variables required or credential files present
-AWS_ACCESS_KEY_ID
-AWS_SECRET_ACCESS_KEY
-
 - Basic Initialization - s3
 ```
 const Aws = require('@kelchy/aws')
-const s3 = new Aws.S3()
+const s3 = new Aws.S3(accessKeyId, secretAccessKey)
 ```
 - Custom client options - override region and apiVersion
 ```
-const s3 = new Aws.S3({ region: 'ap-southeast-1', apiVersion: '2006-03-01' })
+const s3 = new Aws.S3(accessKeyId, secretAccessKey, { region: 'ap-southeast-1', apiVersion: '2006-03-01' })
 ```
 
 - supported methods
 ```
-getS3Object(bucket, key) - fetch the object denoted by key from specific bucket, returns a buffer (use .toString('utf8'))
+async getS3Object(bucket, key, options) - fetch the object denoted by key from specific bucket, returns a buffer (or options.encoding = 'utf8' to convert)
+async putS3Object(bucket, key, payload) - upload payload
+async delS3Object(bucket, key, options) - delete key, if optional versionId is used, will only delete specific versionId
+async listS3ObjectVersions(bucket, prefix) - retrieve all versioning details of key
+async listS3Objects(bucket, options) - retrieve list of all keys
 ```
