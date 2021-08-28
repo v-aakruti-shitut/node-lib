@@ -12,3 +12,5 @@
 - This module wraps helper functions around ioredis to simplify development 
 ## [RabbitMQ](rmq/README.md)
 - This module wraps helper functions around amqplib to simplify development 
+## [MongoDB](mongo/README.md)
+- This module wraps helper functions around mongodb to simplify development 
