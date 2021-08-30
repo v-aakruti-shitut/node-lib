@@ -54,17 +54,3 @@ jobs:
         body: Release mongo/v${{ steps.check.outputs.version }} Type ${{ steps.check.outputs.type }} Commit ${{ steps.check.outputs.commit }}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#    - name: Publish if version has been updated
-#      uses: pascalgn/npm-publish-action@1.3.8
-#      with:
-#        tag_name: "mongo/v%s"
-#        tag_message: "mongo/v%s"
-#        create_tag: "true"
-#        commit_pattern: "^Release mongo (\\S+)"
-#        workspace: "./lib/mongo"
-#        publish_command: "npm"
-#        publish_args: "--workspace @kelchy/mongo --access public"
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
