@@ -1,11 +1,11 @@
-name: npm-publish
+name: npm-publish-redis
 on:
   push:
     branches:
-      - mongo/0.1
+      - redis/1.0
 jobs:
   npm-publish:
-    name: npm-publish-mongo
+    name: npm-publish-redis
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
       uses: EndBug/version-check@v1
       id: check
       with:
-        file-name: ./lib/mongo/package.json
+        file-name: ./lib/redis/package.json
 
     - name: Version update detected
       if: steps.check.outputs.changed == 'true'
@@ -30,18 +30,15 @@ jobs:
         always-auth: true
         registry-url: https://registry.npmjs.org
         cache: npm
-
-    - name: Install dependencies
-      if: steps.check.outputs.changed == 'true'
-      run: npm ci --workspace @kelchy/mongo --include-dev
+      run: npm ci --workspace @kelchy/redis --include-dev
 
     - name: Test
       if: steps.check.outputs.changed == 'true'
-      run: npm run --workspace @kelchy/mongo test:unit
+      run: npm run --workspace @kelchy/redis test:unit
 
     - name: Publish
       if: steps.check.outputs.changed == 'true'
-      run: npm publish --workspace @kelchy/mongo --access public
+      run: npm publish --workspace @kelchy/redis --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
 
@@ -49,8 +46,8 @@ jobs:
       if: steps.check.outputs.changed == 'true'
       uses: actions/create-release@v1
       with:
-        tag_name: mongo/v${{ steps.check.outputs.version }}
-        release_name: Release mongo/v${{ steps.check.outputs.version }}
-        body: Release mongo/v${{ steps.check.outputs.version }} Type ${{ steps.check.outputs.type }} Commit ${{ steps.check.outputs.commit }}
+        tag_name: redis/v${{ steps.check.outputs.version }}
+        release_name: Release redis/v${{ steps.check.outputs.version }}
+        body: 'Release: redis/v${{ steps.check.outputs.version }}\nType: ${{ steps.check.outputs.type }}\nCommit: ${{ steps.check.outputs.commit }}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
