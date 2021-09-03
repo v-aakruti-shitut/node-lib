@@ -25,6 +25,7 @@
     }
   },
   "main": "./index.js",
+  "license": "GPLv3",
   "dependencies": {
     "ioredis": "^4.27.7"
   },
