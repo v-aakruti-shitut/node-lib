@@ -14,17 +14,17 @@ const redis = new Redis(process.env.REDIS_URI)
 ```
 - Custom client options - cluster support for AWS elasticache turned off
 ```
-const options = Redis.clientOptions()
-const redis = new Redis(process.env.REDIS_URI, options)
+const redisOptions = Redis.clientOptions()
+const redis = new Redis(process.env.REDIS_URI, { redisOptions })
 ```
 - Use pubsub 
 ```
-const redis = new Redis(process.env.REDIS_URI, null, { pubsub: true })
+const redis = new Redis(process.env.REDIS_URI, { pubsub: true })
 ```
 - Turn internal logging on
 ```
 const Log = require('@kelchy/log')
-const redis = new Redis(process.env.REDIS_URI, Redis.clientOptions('password'), { log: new Log.Standard() })
+const redis = new Redis(process.env.REDIS_URI, { redisOptions: Redis.clientOptions('password'), log: new Log.Standard() })
 ```
 
 - supported methods
