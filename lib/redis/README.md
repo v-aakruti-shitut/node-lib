@@ -24,7 +24,7 @@ const redis = new Redis(process.env.REDIS_URI, null, { pubsub: true })
 - Turn internal logging on
 ```
 const Log = require('@kelchy/log')
-const redis = new Redis(process.env.REDIS_URI, Redis.clientOptions(true), { log: new Log.Standard() })
+const redis = new Redis(process.env.REDIS_URI, Redis.clientOptions('password'), { log: new Log.Standard() })
 ```
 
 - supported methods
@@ -53,6 +53,6 @@ smembers(key)
 subscribe(chan)
 publish(chan, msg)
 
-clientOptions(cluster) - returns client options which can be used during initialization - 'cluster' is boolean
+clientOptions(password) - returns client options which can be used during initialization - 'password' is string
 result(value) - retrieves the last result from a write operation result - 'value'
 ```
