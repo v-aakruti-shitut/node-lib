@@ -2,7 +2,7 @@
 ## This module wraps helper functions around snowflake to simplify development 
 
 ### Connection to snowflake
-```const Snowflake = require('@egzj/snowflake')
+```const Snowflake = require('@kelchy/snowflake')
 const Log = require('@kelchy/log')
 
 // Initialise log
