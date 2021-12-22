@@ -1,9 +1,11 @@
 # Snowflake
 ## This module wraps helper functions around snowflake to simplify development 
 
-### Connection to snowflake
-```const Snowflake = require('@kelchy/snowflake')
+### Connect to Snowflake
+```
+const Snowflake = require('@kelchy/snowflake')
 const Log = require('@kelchy/log')
+const { awaitWrap } = require('@kelchy/common')
 
 // Initialise log
 const log = new Log.Standard({})
@@ -25,11 +27,12 @@ const snowflake = new Snowflake({
 ### SELECT query example
 ```
 const testSelectQuery = async () => {
-    let query = 'select * from example_table LIMIT 10'
+    let query = 'SELECT * FROM example_table LIMIT 10'
     try {
-        const data = await snowflake.query(query.trim())
-        console.log(data)
+        const data = await awaitWrap(snowflake.query(query.trim()))
+        log.debug(data)
     } catch(err) {
+        log.error(err)
         throw err
     }
 }
