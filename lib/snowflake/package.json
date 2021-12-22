@@ -26,7 +26,7 @@
     "main": "./index.js",
     "license": "GPLv3",
     "dependencies": {
-        "@kelchy/log": "^1.0.1",
+        "@kelchy/log": "^1.0.3",
         "snowflake-sdk": "^1.6.3"
     },
     "devDependencies": {
