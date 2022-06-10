@@ -28,7 +28,6 @@
   "workspaces": [
     "lib/*"
   ],
-  "dependencies": {},
   "devDependencies": {
     "@kelchy/pre-commit": "^1.2.4",
     "eslint": "^7.24.0",
